@@ -1,0 +1,15 @@
+<h1>Index Page</h1>
+
+<form action="/pieces/new" method="GET">
+ <button type="submit">Create New</button>
+</form>
+
+<% pieces.forEach(function(piece){ %>
+  <div><%= piece.name %></div>
+  <div><%= piece.price %></div>
+  <div><%= piece.qtyAvailable %></div>
+  <img src="<%= piece.imageUrl%>" alt="image unavailable">
+  <form action="/pieces/<%=piece._id%>" method="GET">
+    <button type="submit">Show More</button>
+  </form>
+<% }) %>
