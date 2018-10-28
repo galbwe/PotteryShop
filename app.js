@@ -8,6 +8,7 @@ var app = express();
 app.set("view engine", "ejs");
 app.use(methodOverride("_method"));
 app.use(bodyParser());
+app.use(express.static('public'))
 
 // Mongoose setup
 mongoose.connect('mongodb://localhost/pottery_app',
@@ -24,11 +25,15 @@ const Piece = mongoose.model('Piece', PieceSchema);
 
 // Define routes
 
-// INDEX
+// LANDING PAGE
 
 app.get("/", function(req, res){
-  res.redirect("/pieces");
+  res.render("landing")
 })
+
+// INDEX
+
+
 
 app.get("/pieces", function(req, res){
   Piece.find({}, function(err, pieces){
