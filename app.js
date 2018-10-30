@@ -28,7 +28,7 @@ const Piece = mongoose.model('Piece', PieceSchema);
 // LANDING PAGE
 
 app.get("/", function(req, res){
-  res.render("landing")
+  res.render("landing_page")
 })
 
 // INDEX
