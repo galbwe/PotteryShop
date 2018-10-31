@@ -31,12 +31,12 @@ h1, h2 {
 }
 
 #mainHeader {
-  height: 500px;
-  width: 100%;
+  width: auto;
   background: url("../img/justin-cron-799590-unsplash.jpg");
   background-size: 120rem 80rem;
   color: #e2f8ff;
   font-weight: 700;
+  padding-top: 100px;
 }
 
 #mainHeader .header-text {
@@ -47,7 +47,7 @@ h1, h2 {
   background-color: #e8431e;
   font-size: 1.2em;
   font-weight: 700;
-  height: 4em;
+  min-height: 4em;
 }
 
 #mainNavbar .nav-link, #mainNavbar .navbar-brand {
@@ -56,10 +56,6 @@ h1, h2 {
 
 #mainNavbar .nav-link:hover {
   color: #87ceeb;
-}
-
-#mainNavbar .collapse {
-  background-color: #e8431e;
 }
 
 i {
@@ -80,3 +76,55 @@ i {
 #location-and-hours a:hover {
   color: #e8431e;
 }
+
+#mainFooter {
+  background: #e8431e;
+  min-height: 12rem;
+}
+
+#mainFooter i {
+  color: #e2f8ff;
+  font-size: 50px;
+  padding: 10px;
+}
+
+#mainFooter i:hover {
+  color: #87ceeb;
+}
+
+/*MEDIA QUERIES */
+/*
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  #mainHeader {
+    height: 900px;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  #mainHeader {
+    height: 800px;  }
+
+
+ }
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  #mainHeader {
+    height: 700px;
+  }
+
+  #mainNavbar .navbar .navbar-brand {
+    font-size: .8em;
+    color: red;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  #mainHeader {
+    height: 600px;
+  }
+}
+*/
