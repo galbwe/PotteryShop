@@ -11,30 +11,28 @@ app.use(bodyParser());
 app.use(express.static('public'))
 
 // Mongoose setup
-mongoose.connect('mongodb://localhost/pottery_app',
+mongoose.connect('mongodb://localhost/pottery_shop',
                   { useNewUrlParser: true });
+var Piece = require("./models/piece");
 
-const PieceSchema = new mongoose.Schema({
-  name: String,
-  imageUrl: String,
-  price: Number,
-  qtyAvailable: Number,
-  date: {type: Date, default: Date.now}
-});
-const Piece = mongoose.model('Piece', PieceSchema);
 
-// Define routes
+// Define routes// Express setup
+var app = express();
+app.set("view engine", "ejs");
+app.use(methodOverride("_method"));
+app.use(bodyParser());
+app.use(express.static('public'))
 
 // LANDING PAGE
 
 app.get("/", function(req, res){
-  res.render("landing_page")
+  res.render("index")
 })
 
 // INDEX
 
 
-
+/*
 app.get("/pieces", function(req, res){
   Piece.find({}, function(err, pieces){
     if(err){
@@ -123,6 +121,7 @@ app.delete('/pieces/:id', function(req, res){
     }
   )
 })
+*/
 
 // run app
 app.listen(3000, function(){
