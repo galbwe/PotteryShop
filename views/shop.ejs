@@ -1,0 +1,21 @@
+<% include ./partials/header %>
+
+<div class="container-fluid">
+  <section id="shopPageHeader" class="row justify-content-center">
+      <h1 class="display-1">Shop Pottery</h1>
+  </section>
+
+  <section class="row">
+      <% categories.forEach(function (category) { %>
+        <div class="col">
+            <h2><%= category._id.replace(/_/gi, ' ') %></h2>
+            <img src='<%= category.photo %>' />
+            <a href='/shop/<%= category._id %>'>
+              <%= category._id.replace(/_/gi, ' ') %>
+            </a>
+        </div>
+      <% }) %>
+  </section>
+
+
+</div>

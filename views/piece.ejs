@@ -1,0 +1,10 @@
+<% include ./partials/header %>
+
+<div class="container-fluid">
+    <h1><%=piece.name%></h1>
+    <% piece.photos.forEach( function (photo) { %>
+      <img src="<%=photo%>" alt="image unavailable">
+    <% }) %>
+</div>
+
+<% include ./partials/footer %>

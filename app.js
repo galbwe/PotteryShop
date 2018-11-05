@@ -11,7 +11,7 @@ app.use(bodyParser());
 app.use(express.static('public'))
 
 // Mongoose setup
-mongoose.connect('mongodb://localhost/pottery_shop',
+mongoose.connect('mongodb://localhost/pottery_app',
                   { useNewUrlParser: true });
 var Piece = require("./models/piece");
 
@@ -25,105 +25,60 @@ app.use(express.static('public'))
 
 // LANDING PAGE
 
-app.get("/", function(req, res){
-  res.render("index")
+app.get('/', function (req, res) {
+  res.render('index')
 })
 
-// INDEX
-
-
-/*
-app.get("/pieces", function(req, res){
-  Piece.find({}, function(err, pieces){
-    if(err){
-      res.send(err);
+app.get('/shop', function (req, res) {
+  // get unique categories from database
+  Piece.aggregate([
+    { $sort: { category: 1, photos: 1 } },
+    { $group:
+       {
+         _id: '$category',
+         photos: { $first: '$photos' }
+       } }
+  ], function (err, result) {
+    if (err) {
+      console.log(err)
     } else {
-      res.render("index", {pieces: pieces});
-    }
-  })
-
-})
-
-// NEW AND CREATE
-
-app.get("/pieces/new", function(req, res){
-  res.render("new");
-})
-
-app.post("/pieces", function(req, res){
-
-  Piece.create(req.body, function(err, piece){
-    if(err){
-      res.send(err);
-    }
-    else {
-      console.log("posted new piece to database");
-      console.log(piece);
-      res.redirect("/pieces");
-    }
-  })
-
-})
-
-// SHOW
-
-app.get('/pieces/:id', function(req, res){
-  Piece.findById(req.params.id, function(err, piece){
-    if(err){
-      res.send(err);
-    }
-    else {
-      res.render("show", {piece: piece});
+      result = result.filter(function (p) {
+        return (p._id !== null)
+      })
+      result = result.map(function (p) {
+        p.photo = p.photos[0]
+        delete p.photos
+        return p
+      })
+      res.render('shop', { categories: result })
     }
   })
 })
 
-// EDIT AND UPDATE
-
-app.get('/pieces/:id/edit', function(req, res){
-  Piece.findById(req.params.id, function(err, piece){
-    if(err){
-      res.send(err);
-    }
-    else {
-      res.render("edit", {piece: piece});
+app.get('/shop/:category', function (req, res) {
+  Piece.find({
+    category: req.params.category
+  },
+  { photos: 1, name: 1, priceDollars: 1 },
+  function (err, pieces) {
+    if (err) {
+      console.log(err)
+    } else {
+      res.render('category',
+        { category: req.params.category,
+          pieces: pieces })
     }
   })
 })
 
-app.put('/pieces/:id', function(req, res){
-  Piece.findOneAndUpdate(
-    {_id: req.params.id},
-    req.body,
-    function(err, piece){
-      if (err) {
-        res.send(err);
-      }
-      else {
-        res.redirect('/pieces/' + piece._id);
-      }
-    }
-  )
+app.get('/shop/:category/show/:item_id', function (req, res) {
+  Piece.findById(req.params.item_id)
+    .then(function (piece) {
+      res.render('piece', { piece: piece, category: req.params.category })
+    })
 })
-
-// DESTROY
-
-app.delete('/pieces/:id', function(req, res){
-  Piece.deleteOne(
-    {_id: req.params.id},
-    function(err){
-      if(err){
-        res.send(err);
-      }
-      else {
-        res.redirect('/pieces');
-      }
-    }
-  )
-})
-*/
 
 // run app
-app.listen(3000, function(){
-  console.log("Server listening on port 3000");
+app.listen(3000, function () {
+  console.log('Server listening on port 3000')
 })

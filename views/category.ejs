@@ -1,0 +1,22 @@
+<% include ./partials/header %>
+
+<div class="container-fluid">
+  <h1><%= category.replace(/_/gi, ' ').toUpperCase() %></h1>
+
+  <div class="row">
+    <% pieces.forEach(function (piece) { %>
+      <div>
+          <h2><%=piece.name%></h2>
+          <img src='<%=piece.photos[0]%>' alt='image unavailable'/>
+          <h2><%='$ ' + piece.priceDollars + '.00'%></h2>
+          <form action='/shop/<%=category%>/show/<%=piece._id%>'>
+            <button type='submit' class='btn btn-primary'>See More</button>
+          </form>
+      </div>
+    <% }) %>
+  </div>
+
+
+</div>
+
+<% include ./partials/footer %>
