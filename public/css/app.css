@@ -1,7 +1,7 @@
 body {
   font-family: 'Rubik', sans-serif;
   font-weight: 400;
-  background: #b8e4f9;
+  background: #7AC4FF;
   margin-top: 60px;
 }
 
@@ -92,8 +92,39 @@ i {
   color: #87ceeb;
 }
 
-#shopPageHeader {
-  
+#product-categories .card {
+  height: 400px;
+  width: auto;
+}
+
+#product-categories .card-top {
+    height: 75%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background: #0099cc;
+}
+
+#product-categories .card-img-top {
+  display: block;
+  max-height: 100%;
+  max-width: 100%;
+  height: auto;
+  width: auto;
+  margin: auto;
+}
+
+#product-categories .card-body {
+  display: flex;
+  align-items: center;
+}
+
+#product-categories .card-body h5 {
+  margin: auto;
+  font-size: 1.5em;
+  text-transform: capitalize;
+  color: black;
+
 }
 
 /*MEDIA QUERIES */
