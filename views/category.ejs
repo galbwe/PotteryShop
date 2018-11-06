@@ -1,22 +1,37 @@
-<% include ./partials/header %>
-
+<% include partials/header %>
 <div class="container-fluid">
-  <h1><%= category.replace(/_/gi, ' ').toUpperCase() %></h1>
 
-  <div class="row">
+  <section id="categoryPageHeader" class="row h-lg-300px h-md-400px
+    h-sm-500px h-600px justify-content-center">
+      <h1 class="display-1 header-text text-center"><%= category.replace(/_/gi, ' ').toUpperCase() %></h1>
+  </section>
+
+  <section id="item-cards" class="row item-display">
     <% pieces.forEach(function (piece) { %>
-      <div>
-          <h2><%=piece.name%></h2>
-          <img src='<%=piece.photos[0]%>' alt='image unavailable'/>
-          <h2><%='$ ' + piece.priceDollars + '.00'%></h2>
-          <form action='/shop/<%=category%>/show/<%=piece._id%>'>
-            <button type='submit' class='btn btn-primary'>See More</button>
-          </form>
+      <div class="col-md-6 col-lg-4">
+        <a href="/shop/<%=category%>/show/<%=piece._id%>">
+          <div class="card mb-5">
+            <div class="card-top">
+              <img class="card-img-top" src="<%=piece.photos[0]%>" alt="image unavailable">
+            </div>
+            <div class="card-body flex-column p-0 px-1 pt-1 border-top">
+              <div class="col">
+                <h5 class="card-title text-center"><%=piece.name%></h5>
+              </div>
+              <div class="col">
+                <p class="card-text item-price text-center"><%="$" + piece.priceDollars + ".00"%></p>
+              </div>
+            </div>
+          </div>
+        </a>
       </div>
     <% }) %>
-  </div>
-
+  </section>
 
 </div>
 
-<% include ./partials/footer %>
+<!--- script to control the height of the header section --->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="/js/category-header.js"></script>
+
+<% include partials/footer %>

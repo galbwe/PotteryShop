@@ -39,8 +39,13 @@ h1, h2 {
   padding-top: 100px;
 }
 
-#mainHeader .header-text {
-  background: rgba(166, 199, 252, 0.2);
+.header-text {
+  /*background: rgba(166, 199, 252, 0.2);*/
+  margin: auto;
+  padding-top: 50px;
+  color: #e2f8ff;
+  font-weight: 700;
+  text-shadow: 2px 2px black;
 }
 
 #mainNavbar {
@@ -94,28 +99,21 @@ i {
 
 #shopPageHeader {
   margin-top: 50px;
-  height: 200px;
   margin-bottom: 20px;
 
   width: auto;
   background: url('../img/wood-background.jpeg');
 }
 
-#shopPageHeader h1 {
-  margin: auto;
-  padding-top: 50px;
-  color: #e2f8ff;
-  font-weight: 700;
-  text-shadow: 2px 2px black;
-}
-
-#product-categories .card {
+.item-display .card {
   height: 400px;
   width: auto;
   background: #e2f8ff;
 }
 
-#product-categories .card-top {
+
+
+.item-display .card-top {
     height: 70%;
     width: 90%;
     margin-top: 5%;
@@ -127,7 +125,11 @@ i {
     background: #C6C6C6;
 }
 
-#product-categories .card-img-top {
+#item-cards.item-display .card-top {
+  height: 60%
+}
+
+.item-display .card-img-top {
   display: block;
   max-height: 100%;
   max-width: 100%;
@@ -136,12 +138,12 @@ i {
   margin: auto;
 }
 
-#product-categories .card-body {
+.item-display .card-body {
   display: flex;
   align-items: center;
 }
 
-#product-categories .card-body h5 {
+.item-display .card-body h5 {
   margin: auto;
   font-size: 1.5em;
   text-transform: capitalize;
@@ -149,39 +151,27 @@ i {
 
 }
 
-/*MEDIA QUERIES */
-/*
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {
-  #mainHeader {
-    height: 900px;
-  }
+#item-cards.item-display .card-body {
+  display: flex;
+  align-items: flex-start;
+  justify-content: vertical;
+  width: 100%
 }
 
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
-  #mainHeader {
-    height: 800px;  }
-
-
- }
-
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) {
-  #mainHeader {
-    height: 700px;
-  }
-
-  #mainNavbar .navbar .navbar-brand {
-    font-size: .8em;
-    color: red;
-  }
+#item-cards .item-display .card-body h5 {
+  margin: auto;
+  padding: auto;
 }
 
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
-  #mainHeader {
-    height: 600px;
-  }
+#item-cards .item-display .card-body .item-price.card-text {
+  font-size: 1.2em;
 }
-*/
+
+
+#categoryPageHeader {
+  margin-top: 50px;
+  height: 300px;
+  margin-bottom: 20px;
+  width: auto;
+  background: url('../img/wood-deck.jpeg');
+}
