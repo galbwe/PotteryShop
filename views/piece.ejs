@@ -1,10 +1,23 @@
 <% include ./partials/header %>
 
 <div class="container-fluid">
-    <h1><%=piece.name%></h1>
-    <% piece.photos.forEach( function (photo) { %>
-      <img src="<%=photo%>" alt="image unavailable">
-    <% }) %>
-</div>
 
+  <section id="showPageHeader" class="row page-header">
+    <h1 class="header-text display-1 text-center">
+      <%=piece.name%>
+    </h1>
+  </section>
+
+  <section class="row">
+      <div class="col-md-6" id="piecePhotos">
+
+      </div>
+      <div class="col-md-6" id="pieceInfo">
+
+      </div>
+  </section>
+
+<!--- script to control the height of the header section --->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="/js/category-header.js"></script>
 <% include ./partials/footer %>
