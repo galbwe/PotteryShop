@@ -14,6 +14,10 @@ p {
   color: #0d2238;
 }
 
+h5 {
+  color: #0d2238;
+}
+
 .carousel .img {
   padding: 20px;
   height: 400px;
@@ -112,7 +116,6 @@ i {
 }
 
 
-
 .item-display .card-top {
     height: 70%;
     width: 90%;
@@ -143,12 +146,16 @@ i {
   align-items: center;
 }
 
-.item-display .card-body h5 {
+.item-display.card-body h5 {
   margin: auto;
   font-size: 1.5em;
   text-transform: capitalize;
   color: black;
 
+}
+
+.item-display a {
+  text-decoration: none;
 }
 
 #item-cards.item-display .card-body {
