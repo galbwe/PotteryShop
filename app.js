@@ -3,7 +3,9 @@ var express = require("express"),
     mongoose = require("mongoose"),
     bodyParser = require("body-parser"),
     methodOverride = require("method-override"),
-    Piece = require("./models/piece");
+    //might not need models
+    //Piece = require("./models/piece"),
+    //Users = require("./models/user"),
     seedDB = require("./seed");
 
 

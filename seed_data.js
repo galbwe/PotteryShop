@@ -193,7 +193,30 @@ pieces = [
   },
 ]
 
+var users = [
+  {
+    name: "Harry Potter",
+    email: "hpotter@hogwarts.edu",
+    password: "Headwig",
+    cart: [],
+    purchases: [],
+  }, {
+    name: "Hermoine Granger",
+    email: "hgranger@hogwarts.edu",
+    password: "Crookshanks",
+    cart: [],
+    purchases: [],
+  }, {
+    name: "Ronald Weasley",
+    email: "rweasley@hogwarts.edu",
+    password: "Scabbers",
+    cart: [],
+    purchases: [],
+  }
+]
+
 //export data in an object so we can later add test data for users, admins, etc...
 module.exports = {
   pieces: pieces,
+  users: users,
 }
