@@ -196,19 +196,19 @@ pieces = [
 var users = [
   {
     name: "Harry Potter",
-    email: "hpotter@hogwarts.edu",
+    username: "hpotter@hogwarts.edu",
     password: "Headwig",
     cart: [],
     purchases: [],
   }, {
     name: "Hermoine Granger",
-    email: "hgranger@hogwarts.edu",
+    username: "hgranger@hogwarts.edu",
     password: "Crookshanks",
     cart: [],
     purchases: [],
   }, {
     name: "Ronald Weasley",
-    email: "rweasley@hogwarts.edu",
+    username: "rweasley@hogwarts.edu",
     password: "Scabbers",
     cart: [],
     purchases: [],

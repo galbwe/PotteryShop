@@ -3,9 +3,9 @@ var express = require("express"),
     mongoose = require("mongoose"),
     bodyParser = require("body-parser"),
     methodOverride = require("method-override"),
-    //might not need models
-    //Piece = require("./models/piece"),
-    //Users = require("./models/user"),
+    passport = require('passport'),
+    LocalStrategy = require('passport-local'),
+    User = require('./models/user')
     seedDB = require("./seed");
 
 
@@ -21,11 +21,30 @@ app.use(bodyParser.json());
 app.use(express.static( __dirname + '/public'));
 seedDB();
 
+// configure authentication
+session = require("express-session");
+app.use(session({
+  secret: "Wild boar coffee gives me the jitters!",
+  resave: false,
+  saveUninitialized: false,
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 // require routes
 routes = {
   index: require("./routes/index"),
   shop: require("./routes/shop"),
 }
+
+app.use(function(req, res, next){
+  res.locals.currentUser = req.user;
+  next();
+});
 
 app.use("/", routes.index);
 app.use("/shop", routes.shop);

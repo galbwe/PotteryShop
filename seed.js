@@ -11,6 +11,14 @@ function seedDB() {
     if(err){
       console.log(err);
     }
+    console.log("cleared pieces");
+  })
+
+  User.deleteMany({}, function(err){
+    if(err){
+      console.log(err);
+    }
+    console.log("deleted users");
   })
 
   //add pieces to the database
